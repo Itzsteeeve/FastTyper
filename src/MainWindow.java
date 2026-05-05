@@ -10,10 +10,11 @@ public class MainWindow extends JFrame {
     private ResultsPanel resultsPanel;
 
     public MainWindow() {
-        setTitle("Keyboard Speed Test");
+        setTitle("FastTyper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         cardLayout = new CardLayout();
         contentPanel = new JPanel(cardLayout);

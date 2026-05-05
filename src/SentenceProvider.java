@@ -1,8 +1,16 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Arrays;
 
 public class SentenceProvider {
-    public List<String> getSentences(String language, String difficulty) {
-        return Arrays.asList("The quick brown fox jumps over the lazy dog.");
+    private ArrayList<String> easy;
+    private ArrayList<String> medium;
+    private ArrayList<String> hard;
+
+    public SentenceProvider(){
+        easy.add("Ahojda");
+        medium.add("Durumek");
+        hard.add("hardik");
     }
 }

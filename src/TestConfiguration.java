@@ -1,35 +1,40 @@
+import Enums.Difficulty;
+import Enums.Duration;
+import Enums.Language;
+
 public class TestConfiguration {
-    private String difficulty;
-    private String language;
-    private int duration;
+    private Enum<Difficulty> difficulty;
+    private Enum<Language> language;
+    private Enum<Duration> duration;
 
-    public TestConfiguration(String difficulty, String language, int duration) {
+
+    public TestConfiguration(Difficulty easy, Language english, Duration aShort){
+        this.difficulty = Difficulty.EASY;
+        this.language = Language.ENGLISH;
+        this.duration = Duration.SHORT;
+    }
+
+    public Enum<Difficulty> getDifficulty() {
+        return this.difficulty;
+    }
+
+    public void setDifficulty(Enum<Difficulty> difficulty) {
         this.difficulty = difficulty;
-        this.language = language;
-        this.duration = duration;
     }
 
-    public String getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public String getLanguage() {
+    public Enum<Language> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Enum<Language> language) {
         this.language = language;
     }
 
-    public int getDuration() {
+    public Enum<Duration> getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Enum<Duration> duration) {
         this.duration = duration;
     }
 }

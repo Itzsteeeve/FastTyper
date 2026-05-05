@@ -9,7 +9,7 @@ public class TestPanel extends JPanel {
     public TestPanel() {
         setLayout(new BorderLayout());
 
-        sentenceLabel = new JLabel("Test screen", JLabel.CENTER);
+        sentenceLabel = new JLabel("Testing screen", JLabel.CENTER);
         sentenceLabel.setFont(new Font("SansSerif", Font.PLAIN, 24));
         add(sentenceLabel, BorderLayout.CENTER);
     }
