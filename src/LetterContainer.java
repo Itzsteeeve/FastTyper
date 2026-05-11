@@ -23,7 +23,6 @@ public class LetterContainer extends JPanel {
 
         setBackground(Color.WHITE);
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-
     }
 
     public void setColor(Color bg) {
@@ -43,18 +42,14 @@ public class LetterContainer extends JPanel {
     }
 
     public void setStatus(Enum<Correctness> status){
-        switch (status){
-            case Correctness.RIGHT:
-                setColor(Color.GREEN);
-                break;
-            case Correctness.HALF:
-                setColor(Color.YELLOW);
-                break;
-            case Correctness.WRONG:
-                setColor(Color.RED);
-                break;
-            default:
-                setColor(Color.WHITE);
+        if (status.equals(Correctness.RIGHT)) {
+            setColor(Color.GREEN);
+        } else if (status.equals(Correctness.HALF)) {
+            setColor(Color.YELLOW);
+        } else if (status.equals(Correctness.WRONG)) {
+            setColor(Color.RED);
+        } else {
+            setColor(Color.WHITE);
         }
     }
 }
