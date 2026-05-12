@@ -125,7 +125,7 @@ public class TestPanel extends JPanel {
         completedSentences++;
         if (sentenceIndex < sentenceContainers.size()) {
             sentenceContainers.get(sentenceIndex).setBorder(
-                    BorderFactory.createLineBorder(Color.GREEN, 2)
+                    BorderFactory.createLineBorder(Color.black, 2)
             );
         }
     }

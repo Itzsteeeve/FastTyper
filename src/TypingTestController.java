@@ -86,7 +86,7 @@ public class TypingTestController implements InputListener {
         currentSentenceIndex++;
         testPanel.clearInput();
 
-        System.out.println("Now on sentence " + (currentSentenceIndex + 1) + " of " + sentences.size());
+        System.out.println("Now on sentence " + (currentSentenceIndex ) + " of " + sentences.size());
 
         if (currentSentenceIndex >= sentences.size()) {
             System.out.println("All sentences completed! Test finished.");
@@ -107,6 +107,12 @@ public class TypingTestController implements InputListener {
             return Correctness.WRONG;
         }
     }
+
+
+    // TODO implement timer
+    public void timerStart(){};
+
+    public void timerEnd(){};
 
     public void handleRetry() {
         window.showIntro();

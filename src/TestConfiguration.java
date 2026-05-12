@@ -9,7 +9,7 @@ public class TestConfiguration {
 
 
     public TestConfiguration(Difficulty easy, Language english, Duration aShort){
-        this.difficulty = Difficulty.EASY;
+        this.difficulty = Difficulty.HARD;
         this.language = Language.ENGLISH;
         this.duration = Duration.SHORT;
     }
