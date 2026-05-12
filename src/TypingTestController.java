@@ -97,9 +97,11 @@ public class TypingTestController implements InputListener {
     }
 
     private Enum<Correctness> checkCharacter(char userChar, char sentenceChar, Enum<Difficulty> difficulty) {
+
         if (userChar == sentenceChar) {
             return Correctness.RIGHT;
-        } else if (difficulty.equals(Difficulty.EASY) && userChar == Character.toUpperCase(sentenceChar)) {
+        } else if (String.valueOf(userChar).toUpperCase().equals(String.valueOf(sentenceChar))||
+        String.valueOf(userChar).toLowerCase().equals(String.valueOf(sentenceChar))) {
             return Correctness.HALF;
         } else {
             return Correctness.WRONG;

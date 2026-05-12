@@ -1,20 +1,25 @@
-import java.util.Map;
-
 public class TestResult {
-    private int wpm;
+    private int lpm;
     private double accuracy;
+    private int letterCount;
     private int errorCount;
-    private Map<String, Integer> commonMistakes;
+    private int halfCount;
+    private int rightCount;
+    private int time;
 
-    public TestResult(int wpm, double accuracy, int errorCount, Map<String, Integer> commonMistakes) {
-        this.wpm = wpm;
+    public TestResult(int wpm, double accuracy, int errorCount,
+                      int halfCount, int rightCount, int time, int letterCount) {
         this.accuracy = accuracy;
         this.errorCount = errorCount;
-        this.commonMistakes = commonMistakes;
+        this.halfCount = halfCount;
+        this.rightCount = rightCount;
+        this.time = time;
+        this.letterCount = letterCount;
+        this.lpm = letterCount/60;
     }
 
-    public int getWpm() {
-        return wpm;
+    public int getLpm() {
+        return lpm;
     }
 
     public double getAccuracy() {
@@ -25,7 +30,4 @@ public class TestResult {
         return errorCount;
     }
 
-    public Map<String, Integer> getCommonMistakes() {
-        return commonMistakes;
-    }
 }

@@ -3,12 +3,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.*;
 import Enums.Correctness;
 
 public class TestPanel extends JPanel {
     private JPanel sentencesPanel;
     private JTextField inputField;
+    private Timer timer;
+    private boolean running;
     private JLabel timerLabel;
     private JLabel statsLabel;
     private List<JPanel> sentenceContainers;
@@ -39,6 +43,7 @@ public class TestPanel extends JPanel {
         topPanel.add(statsLabel, BorderLayout.EAST);
         add(topPanel, BorderLayout.NORTH);
 
+
         inputField = new JTextField();
         inputField.setFont(new Font("SansSerif", Font.PLAIN, 16));
         inputField.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -66,6 +71,10 @@ public class TestPanel extends JPanel {
         });
         inputField.setFocusable(true);
         add(inputField, BorderLayout.SOUTH);
+    }
+
+    public void updateTime(){
+
     }
 
     public void setSentences(List<String> sentences) {
@@ -121,13 +130,6 @@ public class TestPanel extends JPanel {
         }
     }
 
-    public void setTimerText(String text) {
-        timerLabel.setText("Time: " + text);
-    }
-
-    public void setStatsText(String wpm, String accuracy) {
-        statsLabel.setText("WPM: " + wpm + " | Accuracy: " + accuracy);
-    }
 
     public void setInputListener(InputListener listener) {
         this.inputListener = listener;
@@ -144,6 +146,7 @@ public class TestPanel extends JPanel {
     public void focusInput() {
         inputField.requestFocus();
     }
+
 
     public void reset() {
         clearInput();

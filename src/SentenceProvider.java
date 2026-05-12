@@ -18,7 +18,7 @@ public class SentenceProvider {
         easy.add("World");
         easy.add("Java");
         easy.add("Test");
-        easy.add("Code");
+        easy.add("Jan Karel");
 
         medium.add("Programming");
         medium.add("Challenge");
