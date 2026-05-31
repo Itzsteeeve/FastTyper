@@ -1,43 +1,54 @@
-import Enums.Difficulty;
-import Enums.Duration;
-import Enums.Language;
-
 import java.awt.*;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.*;
 
 public class IntroPanel extends JPanel {
     private JButton startButton;
     private JButton settingsButton;
 
     public IntroPanel() {
-        setLayout(new BorderLayout());
+        setLayout(new GridBagLayout());
 
-        JLabel label = new JLabel("FastTyper", JLabel.CENTER);
-        label.setFont(new Font("SansSerif", Font.BOLD, 35));
-        add(label, BorderLayout.CENTER);
+        JPanel content = new JPanel();
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        content.setOpaque(false);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(0, 1, 10, 10));
-        buttonPanel.setBorder(new EmptyBorder(10, 50, 20, 50));
-        buttonPanel.setBorder(new EmptyBorder(0,200,300,200));
+        JLabel title = new JLabel("FastTyper");
+        title.setFont(new Font("SansSerif", Font.BOLD, 48));
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        JLabel subtitle = new JLabel("Test your typing speed");
+        subtitle.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        subtitle.setForeground(Color.GRAY);
+        subtitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         startButton = new JButton("Start");
+        startButton.setFont(new Font("SansSerif", Font.BOLD, 18));
+        startButton.setPreferredSize(new Dimension(220, 50));
+        startButton.setMaximumSize(new Dimension(220, 50));
+        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         settingsButton = new JButton("Settings");
+        settingsButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
+        settingsButton.setPreferredSize(new Dimension(220, 45));
+        settingsButton.setMaximumSize(new Dimension(220, 45));
+        settingsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        buttonPanel.add(startButton);
-        buttonPanel.add(settingsButton);
+        content.add(title);
+        content.add(Box.createVerticalStrut(8));
+        content.add(subtitle);
+        content.add(Box.createVerticalStrut(40));
+        content.add(startButton);
+        content.add(Box.createVerticalStrut(12));
+        content.add(settingsButton);
 
-        add(buttonPanel,BorderLayout.SOUTH);
+        add(content);
     }
 
     public void setStartListener(Runnable listener) {
         startButton.addActionListener(e -> listener.run());
     }
 
-    public TestConfiguration getConfiguration() {
-        return new TestConfiguration(Difficulty.EASY, Language.ENGLISH, Duration.SHORT);
+    public void setSettingsListener(Runnable listener) {
+        settingsButton.addActionListener(e -> listener.run());
     }
 }

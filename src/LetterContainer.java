@@ -25,31 +25,15 @@ public class LetterContainer extends JPanel {
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
     }
 
-    public void setColor(Color bg) {
-        setBackground(bg);
-    }
-
-    public Enum<Correctness> correctLetter(String toCorrect){
-        if (toCorrect.equals(letter)){
-            correctness = Correctness.RIGHT;
-            return correctness;
-        } else if (toCorrect.toUpperCase().equals(letter)) {
-            correctness = Correctness.HALF;
-            return correctness;
-        }else {
-            return Correctness.WRONG;
-        }
-    }
-
     public void setStatus(Enum<Correctness> status){
         if (status.equals(Correctness.RIGHT)) {
-            setColor(Color.GREEN);
+            setBackground(Color.GREEN);
         } else if (status.equals(Correctness.HALF)) {
-            setColor(Color.YELLOW);
+            setBackground(Color.YELLOW);
         } else if (status.equals(Correctness.WRONG)) {
-            setColor(Color.RED);
+            setBackground(Color.RED);
         } else {
-            setColor(Color.WHITE);
+            setBackground(Color.WHITE);
         }
     }
 }

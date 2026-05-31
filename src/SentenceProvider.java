@@ -1,56 +1,82 @@
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Arrays;
 import Enums.Difficulty;
 
 public class SentenceProvider {
-    private ArrayList<String> easy;
-    private ArrayList<String> medium;
-    private ArrayList<String> hard;
 
-    public SentenceProvider(){
-        easy = new ArrayList<>();
-        medium = new ArrayList<>();
-        hard = new ArrayList<>();
+    private final ArrayList<String> easy   = new ArrayList<>();
+    private final ArrayList<String> medium = new ArrayList<>();
+    private final ArrayList<String> hard   = new ArrayList<>();
 
-        easy.add("Hello");
-        easy.add("World");
-        easy.add("Java");
-        easy.add("Test");
-        easy.add("Jan Karel");
+    public SentenceProvider() {
+        easy.add("hello");
+        easy.add("world");
+        easy.add("java");
+        easy.add("test");
+        easy.add("type");
+        easy.add("fast");
+        easy.add("code");
+        easy.add("run");
+        easy.add("play");
+        easy.add("win");
+        easy.add("open");
+        easy.add("close");
+        easy.add("save");
+        easy.add("load");
+        easy.add("start");
 
-        medium.add("Programming");
-        medium.add("Challenge");
-        medium.add("Keyboard");
-        medium.add("Accuracy");
-        medium.add("Perfect");
 
-        hard.add("Extraordinary");
-        hard.add("Achievements");
-        hard.add("Sophisticated");
-        hard.add("Successfully");
-        hard.add("Opportunity");
+        medium.add("programming");
+        medium.add("challenge");
+        medium.add("keyboard");
+        medium.add("accuracy");
+        medium.add("perfect");
+        medium.add("practice");
+        medium.add("software");
+        medium.add("developer");
+        medium.add("function");
+        medium.add("variable");
+        medium.add("interface");
+        medium.add("compiler");
+        medium.add("database");
+        medium.add("algorithm");
+        medium.add("framework");
+
+        hard.add("extraordinary");
+        hard.add("achievements");
+        hard.add("sophisticated");
+        hard.add("successfully");
+        hard.add("opportunity");
+        hard.add("circumstances");
+        hard.add("perpendicular");
+        hard.add("infrastructure");
+        hard.add("synchronization");
+        hard.add("miscellaneous");
+        hard.add("incomprehensible");
+        hard.add("conscientious");
+        hard.add("unquestionably");
+        hard.add("entrepreneurship");
+        hard.add("acknowledgement");
+    }
+
+    public List<String> getSentences(Enum<Difficulty> difficulty, int count, int setIndex) {
+        ArrayList<String> shuffled = new ArrayList<>(getSource(difficulty));
+        Collections.shuffle(shuffled);
+        return shuffled.subList(0, Math.min(count, shuffled.size()));
     }
 
     public List<String> getSentences(Enum<Difficulty> difficulty, int count) {
-        List<String> result = new ArrayList<>();
-        ArrayList<String> source = null;
+        return getSentences(difficulty, count, 0);
+    }
 
+    private ArrayList<String> getSource(Enum<Difficulty> difficulty) {
         if (difficulty.equals(Difficulty.EASY)) {
-            source = easy;
-        } else if (difficulty.equals(Difficulty.MEDIUM)) {
-            source = medium;
-        } else if (difficulty.equals(Difficulty.HARD)) {
-            source = hard;
+            return easy;
         }
-
-        if (source != null) {
-            for (int i = 0; i < count && i < source.size(); i++) {
-                result.add(source.get(i));
-            }
+        if (difficulty.equals(Difficulty.MEDIUM)) {
+            return medium;
         }
-
-        return result;
+        return hard;
     }
 }

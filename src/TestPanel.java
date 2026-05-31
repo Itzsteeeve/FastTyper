@@ -3,16 +3,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.*;
 import Enums.Correctness;
 
 public class TestPanel extends JPanel {
     private JPanel sentencesPanel;
     private JTextField inputField;
-    private Timer timer;
-    private boolean running;
     private JLabel timerLabel;
     private JLabel statsLabel;
     private List<JPanel> sentenceContainers;
@@ -73,10 +69,21 @@ public class TestPanel extends JPanel {
         add(inputField, BorderLayout.SOUTH);
     }
 
-    public void updateTime(){
-
+    public void updateTimerDisplay(String time) {
+        timerLabel.setText("Time: " + time);
     }
 
+    public void updateStats(int wpm, double accuracy, int currentSet, int totalSets) {
+        String setInfo;
+        if (totalSets > 1) {
+            setInfo = String.format("%d/%d  |  ", currentSet, totalSets);
+        } else {
+            setInfo = "";
+        }
+        statsLabel.setText(String.format("%sWPM: %d  |  Accuracy: %.0f%%", setInfo, wpm, accuracy));
+    }
+
+    /** Clears the panel and renders a new list of words as letter boxes ready for colour feedback. */
     public void setSentences(List<String> sentences) {
         System.out.println("Setting " + sentences.size() + " sentences in TestPanel");
         sentencesPanel.removeAll();
@@ -91,7 +98,6 @@ public class TestPanel extends JPanel {
             sentencePane.setBackground(Color.WHITE);
             sentencePane.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
             sentencePane.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 100));
-
             List<LetterContainer> letterContainers = new ArrayList<>();
 
             for (char c : sentence.toCharArray()) {
@@ -147,18 +153,4 @@ public class TestPanel extends JPanel {
         inputField.requestFocus();
     }
 
-
-    public void reset() {
-        clearInput();
-        completedSentences = 0;
-        sentencesPanel.removeAll();
-        allLetterContainers.clear();
-        sentenceContainers.clear();
-        sentencesPanel.revalidate();
-        sentencesPanel.repaint();
-    }
-
-    public int getCompletedSentences() {
-        return completedSentences;
-    }
 }
